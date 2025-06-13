@@ -7,22 +7,23 @@ import java.util.*;
 
 public class Grafo<K, T> implements IGrafo<K, T> {
 
-    private Map<K, INodo<T>> nodos = new HashMap<>(); // guarda como clave un dato tipo K, y un INodo de tipo T!!
+    private Map<K, INodo<T>> nodos = new HashMap<>(); // guarda como clave un dato tipo K, y un INodo que guarde un dato tipo T!
 
     @Override
-    public void agregarNodo(K llave, T dato) {
+    public void agregarNodo(K llave, T dato) { // recibe una clave de tipo K, que será el DNI de la persona, y un dato tipo T que será la
+    	// instancia de clase Persona
         if (!nodos.containsKey(llave)) {
-            nodos.put(llave, new Nodo<>(dato));
+            nodos.put(llave, new Nodo<>(dato)); // los agrego
         }
     }
 
     @Override
-    public void agregarArista(K origen, K destino) {
-        if (nodos.containsKey(origen) && nodos.containsKey(destino)) {
+    public void agregarArista(K origen, K destino) { // recibo las claves de ambos nodos que desea vincular como vecinos
+        if (nodos.containsKey(origen) && nodos.containsKey(destino)) { // verifico si están en el grafo los nodos que tienen dicha clave
             INodo<T> nodoOrigen = nodos.get(origen);
             INodo<T> nodoDestino = nodos.get(destino);
             nodoOrigen.agregarVecino(nodoDestino);
-            nodoDestino.agregarVecino(nodoOrigen);
+            nodoDestino.agregarVecino(nodoOrigen); // grafo no dirigido!
         }
     }
 
