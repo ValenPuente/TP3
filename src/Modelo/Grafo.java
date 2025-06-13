@@ -7,14 +7,15 @@ import java.util.*;
 
 public class Grafo<T> implements IGrafo<T>{
 
-    private Map<T, Nodo> nodos = new HashMap<>();
+	private Map<T, Nodo<T>> nodos = new HashMap<>();
+
 
     public void agregarNodo(T llave, T dato) {
         if (!nodos.containsKey(llave)) {
-            nodos.put(llave, new Nodo(dato));
+        	nodos.put(llave, new Nodo<T>(dato));
+
         }
     }
-
 
 
     public void agregarArista(T origen, T destino) {
@@ -27,31 +28,32 @@ public class Grafo<T> implements IGrafo<T>{
     }
 
 
+    @Override
     public void mostrarMatrizAdyacencia() {
         System.out.println("Matriz de Adyacencia:");
         List<T> claves = new ArrayList<>(nodos.keySet());
 
-    //    Collections.sort(claves); // Ordenar nodos por valor
-
         // Encabezado
-        System.out.print("   ");
+        System.out.printf("%-20s", ""); // espacio vacío arriba a la izquierda
         for (T clave : claves) {
-            System.out.print(clave + " ");
+            System.out.printf("%-20s", clave.toString());
+        }
+        System.out.println();
 
-            // Filas de la matriz
-            for (T i : claves) {
-                System.out.print(i + ": ");
-                for (T j : claves) {
-                    Nodo<T> nodoI = nodos.get(i);
-                    Nodo<T> nodoJ = nodos.get(j);
-                    System.out.print(nodoI.getVecinos().contains(nodoJ) ? "1 " : "0 ");
-                }
-                System.out.println();
+        // Filas
+        for (T i : claves) {
+            System.out.printf("%-20s", i.toString()); // nombre fila
+            for (T j : claves) {
+                Nodo<T> nodoI = nodos.get(i);
+                Nodo<T> nodoJ = nodos.get(j);
+                boolean conectado = nodoI.getVecinos().contains(nodoJ);
+                System.out.printf("%-20s", conectado ? "1" : "0");
             }
+            System.out.println();
         }
     }
 
-
+    
     public void bfs(T inicio) {
         if (!nodos.containsKey(inicio)) return;
         Set<T> visitados = new HashSet<>();

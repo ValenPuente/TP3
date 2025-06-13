@@ -26,4 +26,9 @@ public class Persona implements IPersona {
         this.nombre = nombre;
         this.DNI = DNI;
     }
+    
+    @Override
+    public String toString() {
+        return nombre + " (" + DNI + ")";
+    }
 }
