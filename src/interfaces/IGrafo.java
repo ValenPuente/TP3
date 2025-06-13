@@ -1,4 +1,4 @@
-package Interfaces;
+package interfaces;
 
 public interface IGrafo<K, T> {
     void agregarNodo(K llave, T dato);

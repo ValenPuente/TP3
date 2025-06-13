@@ -1,6 +1,6 @@
-package Modelo;
+package modelo;
 
-import Interfaces.IPersona;
+import interfaces.IPersona;
 
 public class Persona implements IPersona {
     private String nombre;

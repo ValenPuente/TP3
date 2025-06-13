@@ -1,7 +1,7 @@
-package Modelo;
+package modelo;
 
-import Interfaces.IGrafo;
-import Interfaces.INodo;
+import interfaces.IGrafo;
+import interfaces.INodo;
 
 import java.util.*;
 

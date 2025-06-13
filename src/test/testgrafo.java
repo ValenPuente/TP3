@@ -1,7 +1,7 @@
 package test;
 
-import Modelo.*;
-import Interfaces.*;
+import modelo.*;
+import interfaces.*;
 
 public class testgrafo {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package Modelo;
+package modelo;
 
-import Interfaces.INodo;
+import interfaces.INodo;
 
 import java.util.ArrayList;
 import java.util.List;
