@@ -1,13 +1,9 @@
 package Interfaces;
 
-import Modelo.Nodo;
-import Modelo.Persona;
-
-public interface IGrafo<T> {
-
-    void agregarNodo(T llave, T dato);
-    void agregarArista(T origen, T destino);
+public interface IGrafo<K, T> {
+    void agregarNodo(K llave, T dato);
+    void agregarArista(K origen, K destino);
     void mostrarMatrizAdyacencia();
-    void bfs(T inicio);
-    void dfs(T inicio);
+    void bfs(K inicio);
+    void dfs(K inicio);
 }
